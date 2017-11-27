@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Working Time</string>
+    <string name="button_start">התחלתי לעבוד</string>
+    <string name="button_finish">סיימתי לעבוד</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_per_hour">שכר לשעה</string>
+    <string name="text_monthly_down">הורדות קבועות</string>
+    <string name="text_monthly_up">תוספות קבועות</string>
+    <string name="text_title">השכר מחושב מהראשון עד הראשון לחודש</string>
+    <string name="button_save">שמור שינויים</string>
+    <string name="clock_first_text">00:00:00</string>
+    <string name="text_name">שם מקום העבודה</string>
+    <string name="button_cancel">ביטול</string>
+    <string name="sp_job_name">jobName</string>
+    <string name="sp_per_hour">perHour</string>
+    <string name="sp_discount">discountMonthly</string>
+    <string name="sp_increase">increaseMonthly</string>
+    <string name="text_working_hours">שעות</string>
+    <string name="text_date">תאריך</string>
+    <string name="sp_job">job</string>
+    <string name="text_total">סה\"כ:</string>
+    <string name="textSalary">שכר</string>
+    <string name="text_exit"> יציאה</string>
+    <string name="text_open">כניסה</string>
+    <string name="sp_currently_seconds">currently_seconds</string>
+    <string name="sp_currently_minutes">currently_minutes</string>
+    <string name="sp_currently_hours">currently_hours</string>
+</resources>
