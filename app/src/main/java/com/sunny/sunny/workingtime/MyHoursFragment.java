@@ -98,4 +98,19 @@ public class MyHoursFragment extends Fragment {
 
     }
 
+    public void updateList(){
+
+        try {
+            getAllHours();
+        }catch (NullPointerException ex){
+            Log.d(TAG, ex.getMessage());
+        }
+
+        adapter = new HoursAdapter(jobTimesArr, getContext(), this);
+        hoursList.setAdapter(adapter);
+
+        getTotal();
+
+    }
+
 }

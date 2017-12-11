@@ -1,5 +1,6 @@
 package com.sunny.sunny.workingtime;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
@@ -7,12 +8,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v7.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ClockFragment.UpdateListListener{
 
     private FragmentManager manager;
     private PagerAdapter pagerAdapter;
     private HoursAdapter adapter;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,34 +26,21 @@ public class MainActivity extends AppCompatActivity {
         manager = getSupportFragmentManager();
         adapter = new HoursAdapter(null, this);
 
-        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("פרטים"));
-        tabLayout.addTab(tabLayout.newTab().setText("שעון נוכחות"));
-        tabLayout.addTab(tabLayout.newTab().setText("השעות שלי"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        pagerAdapter = new PageAdapter(manager, tabLayout.getTabCount());
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        pagerAdapter = new PageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
 
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                pagerAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
 
+    @Override
+    public void updateList() {
+        String tag = "android:switcher:" + R.id.pager + ":" + 2;
+        MyHoursFragment myHoursFragment = (MyHoursFragment) getSupportFragmentManager().findFragmentByTag(tag);
+        myHoursFragment.updateList();
+    }
 }

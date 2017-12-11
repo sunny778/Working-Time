@@ -57,6 +57,8 @@ public class ClockFragment extends Fragment implements View.OnClickListener {
 
     private ArrayList<JobTimes> jobTimesArr;
 
+    private UpdateListListener updateListListener;
+
     public ClockFragment() {
         // Required empty public constructor
     }
@@ -79,6 +81,21 @@ public class ClockFragment extends Fragment implements View.OnClickListener {
         buttonCancel.setOnClickListener(this);
 
         return root;
+    }
+
+    interface UpdateListListener{
+        void updateList();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            updateListListener = (UpdateListListener) getActivity();
+        }catch (ClassCastException ex){
+            Log.d("", ex.getMessage());
+        }
     }
 
     @Override
@@ -176,8 +193,6 @@ public class ClockFragment extends Fragment implements View.OnClickListener {
 
                 float totalHours = calcTotalHours(startingTime, endingTime);
 
-                Toast.makeText(getContext(),totalHours + "", Toast.LENGTH_SHORT).show();
-
                 JobTimes jobTimes = new JobTimes(year, month, day, startingTime, endingTime, totalHours);
 
                 jobTimesArr.add(jobTimes);
@@ -187,6 +202,8 @@ public class ClockFragment extends Fragment implements View.OnClickListener {
                 buttonFinish.setVisibility(View.INVISIBLE);
                 buttonCancel.setVisibility(View.INVISIBLE);
                 timer.cancel();
+
+                updateListListener.updateList();
 
                 break;
 

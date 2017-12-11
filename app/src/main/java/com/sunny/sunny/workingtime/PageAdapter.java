@@ -13,9 +13,8 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     private int numOfTabs;
 
-    public PageAdapter(FragmentManager fm, int numOfTabs) {
+    public PageAdapter(FragmentManager fm) {
         super(fm);
-        this.numOfTabs = numOfTabs;
     }
 
     @Override
@@ -42,7 +41,28 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return numOfTabs;
+        return 3;
     }
 
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        String title = null;
+
+        switch (position){
+
+            case 0:
+                title = "פרטים";
+                break;
+
+            case 1:
+                title = "שעון נוכחות";
+                break;
+
+            case 2:
+                title = "השעות שלי";
+                break;
+        }
+        return title;
+    }
 }

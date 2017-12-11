@@ -1,10 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sunny.sunny.workingtime.DetailsFragment"
     android:background="@color/backgroundColor"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.sunny.sunny.workingtime.DetailsFragment">
 
     <TextView
         android:id="@+id/textTitle"
@@ -38,9 +39,9 @@
             android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:layout_weight="2"
             android:ems="10"
-            android:layout_gravity="end"
             android:inputType="text" />
 
     </LinearLayout>
@@ -122,11 +123,32 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonSave"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/button_save" />
+        android:orientation="vertical">
+
+        <com.spark.submitbutton.SubmitButton
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_gravity="center"
+            android:text="@string/button_save"
+            android:textColor="@color/black"
+            app:sub_btn_background="@color/white"
+            app:sub_btn_duration="3000"
+            app:sub_btn_line_color="@color/colorPrimary"
+            app:sub_btn_ripple_color="@color/colorPrimary"
+            app:sub_btn_tick_color="@color/white" />
+    </LinearLayout>
+
+    <!--<Button-->
+    <!--android:id="@+id/buttonSave"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="50dp"-->
+    <!--android:text="@string/button_save"-->
+    <!--android:background="@drawable/custom_button_save"/>-->
 
 </LinearLayout>

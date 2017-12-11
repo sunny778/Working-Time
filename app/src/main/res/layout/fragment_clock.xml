@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/button_start" />
+        android:text="@string/button_start"
+        android:background="@drawable/custom_button_start"/>
 
     <TextView
         android:id="@+id/textShowTime"
@@ -30,11 +31,13 @@
         android:id="@+id/buttonFinish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonStart"
-        android:layout_toEndOf="@+id/textDate"
-        android:layout_toRightOf="@+id/textDate"
         android:text="@string/button_finish"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:background="@drawable/custom_button_finish"
+        android:layout_alignBaseline="@+id/buttonStart"
+        android:layout_alignBottom="@+id/buttonStart"
+        android:layout_toRightOf="@+id/buttonStart"
+        android:layout_toEndOf="@+id/buttonStart" />
 
     <TextView
         android:id="@+id/textDate"
@@ -50,11 +53,12 @@
         android:id="@+id/buttonCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/button_cancel"
+        android:visibility="invisible"
+        android:background="@drawable/custom_button_cancel"
         android:layout_alignBaseline="@+id/buttonStart"
         android:layout_alignBottom="@+id/buttonStart"
-        android:layout_toLeftOf="@+id/textDate"
-        android:layout_toStartOf="@+id/textDate"
-        android:text="@string/button_cancel"
-        android:visibility="invisible" />
+        android:layout_toLeftOf="@+id/buttonStart"
+        android:layout_toStartOf="@+id/buttonStart" />
 
 </RelativeLayout>
